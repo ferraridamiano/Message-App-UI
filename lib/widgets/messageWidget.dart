@@ -19,6 +19,7 @@ class _ReceivedMessagesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String stringDate = _message.time.minute < 10 ? '${_message.time.hour}:0${_message.time.minute}' : '${_message.time.hour}:${_message.time.minute}';
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 7.0),
       child: Row(
@@ -35,9 +36,12 @@ class _ReceivedMessagesWidget extends StatelessWidget {
                 bottomRight: Radius.circular(25),
               ),
             ),
-            child: Text(_message.text, style: messageTextRecivedStyle,),
+            child: Text(
+              _message.text,
+              style: messageTextRecivedStyle,
+            ),
           ),
-          Text(_message.time, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
+          Text(stringDate, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
         ],
       ),
     );
@@ -50,12 +54,13 @@ class _SentMessageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String stringDate = _message.time.minute < 10 ? '${_message.time.hour}:0${_message.time.minute}' : '${_message.time.hour}:${_message.time.minute}';
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 7.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
-          Text(_message.time, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
+          Text(stringDate, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
           SizedBox(width: 5),
           Container(
             constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .6),
@@ -68,11 +73,35 @@ class _SentMessageWidget extends StatelessWidget {
                 bottomLeft: Radius.circular(25),
               ),
             ),
-            child: Text(_message.text,
+            child: Text(
+              _message.text,
               style: messageTextSentStyle,
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class NewDayChatWidget extends StatelessWidget {
+  final String stringDate;
+
+  NewDayChatWidget(this.stringDate);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.grey,
+        borderRadius: BorderRadius.all(Radius.circular(6)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 5.0),
+        child: Text(
+          stringDate,
+          style: TextStyle(color: Colors.white),
+        ),
       ),
     );
   }

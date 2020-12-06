@@ -43,7 +43,24 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Column(
         children: <Widget>[
           Expanded(
-            child: ListView.builder(padding: const EdgeInsets.all(15), itemCount: messages.length, itemBuilder: (ctx, i) => MessageWidget(messages[i])),
+            child: ListView.builder(
+              padding: const EdgeInsets.all(15),
+              itemCount: messages.length,
+              itemBuilder: (ctx, i) {
+                DateTime messageTime = messages[i].time;
+                if (i > 0 && messages[i - 1].time.add(Duration(days: 1)).day == messageTime.day) {
+                  //different day then previous message
+                  String stringDate = '${messageTime.day}/${messageTime.month}/${messageTime.year}';
+                  return Column(
+                    children: [
+                      NewDayChatWidget(stringDate),
+                      MessageWidget(messages[i]),
+                    ],
+                  );
+                }
+                return MessageWidget(messages[i]);
+              },
+            ),
           ),
           Container(
             margin: EdgeInsets.all(15.0),

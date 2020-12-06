@@ -12,7 +12,7 @@ enum MessageType {
 class Message {
   final TransmissionType transmissionType;
   final MessageType messageType;
-  final String time;
+  final DateTime time;
   final String text;
   final String urlImage;
 

@@ -15,26 +15,26 @@ List<Message> messages = [
   Message(
       transmissionType: TransmissionType.RECIVED,
       messageType: MessageType.TEXT,
-      time: '08:43 AM',
+      time: DateTime.utc(2020, 1, 1, 20, 43),
       text: 'Hi guy!'),
   Message(
       transmissionType: TransmissionType.SENT,
       messageType: MessageType.TEXT,
-      time: '08:45 AM',
+      time: DateTime.utc(2020, 1, 2, 10, 02),
       text: 'Hi, how are you today?'),
   Message(
       transmissionType: TransmissionType.SENT,
       messageType: MessageType.TEXT,
-      time: '08:45 AM',
+      time: DateTime.utc(2020, 1, 2, 10, 03),
       text: '😊'),
   Message(
       transmissionType: TransmissionType.RECIVED,
       messageType: MessageType.TEXT,
-      time: '08:45 AM',
+      time: DateTime.utc(2020, 1, 2, 10, 50),
       text: 'Nice, I am going to launch my new Flutter App. What about you?'),
   Message(
       transmissionType: TransmissionType.SENT,
       messageType: MessageType.TEXT,
-      time: '08:47 AM',
+      time: DateTime.utc(2020, 1, 3, 20, 22),
       text: 'Cool! I\'m fine thanks!'),
 ];
