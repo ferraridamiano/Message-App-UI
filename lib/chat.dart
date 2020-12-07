@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:message_app/widgets/conversationWidget.dart';
 import 'messageLists.dart';
 import 'models/contact.dart';
-import 'widgets/messageWidget.dart';
 
 class ChatScreen extends StatefulWidget {
   final Contact contact;
@@ -42,28 +42,10 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       body: Column(
         children: <Widget>[
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.all(15),
-              itemCount: messages.length,
-              itemBuilder: (ctx, i) {
-                DateTime messageTime = messages[i].time;
-                if (i > 0 && messages[i - 1].time.add(Duration(days: 1)).day == messageTime.day) {
-                  //different day then previous message
-                  String stringDate = '${messageTime.day}/${messageTime.month}/${messageTime.year}';
-                  return Column(
-                    children: [
-                      NewDayChatWidget(stringDate),
-                      MessageWidget(messages[i]),
-                    ],
-                  );
-                }
-                return MessageWidget(messages[i]);
-              },
-            ),
-          ),
+          ConversationWidget(messages),
+          //textfield to type the message
           Container(
-            margin: EdgeInsets.all(15.0),
+            margin: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
             height: 61,
             child: Row(
               children: <Widget>[
@@ -106,12 +88,15 @@ class _ChatScreenState extends State<ChatScreen> {
                 SizedBox(width: 15),
                 Container(
                   decoration: BoxDecoration(color: Colors.green, shape: BoxShape.circle),
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.send,
-                        color: Colors.white,
-                      ),
-                      onPressed: null),
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: IconButton(
+                        icon: Icon(
+                          Icons.send,
+                          color: Colors.white,
+                        ),
+                        onPressed: null),
+                  ),
                 )
               ],
             ),

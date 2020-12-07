@@ -20,21 +20,21 @@ List<Message> messages = [
   Message(
       transmissionType: TransmissionType.SENT,
       messageType: MessageType.TEXT,
-      time: DateTime.utc(2020, 1, 2, 10, 02),
+      time: DateTime.utc(2020, 12, 6, 10, 02),
       text: 'Hi, how are you today?'),
   Message(
       transmissionType: TransmissionType.SENT,
       messageType: MessageType.TEXT,
-      time: DateTime.utc(2020, 1, 2, 10, 03),
+      time: DateTime.utc(2020, 12, 6, 10, 03),
       text: '😊'),
   Message(
       transmissionType: TransmissionType.RECIVED,
       messageType: MessageType.TEXT,
-      time: DateTime.utc(2020, 1, 2, 10, 50),
+      time: DateTime.utc(2020, 12, 7, 10, 50),
       text: 'Nice, I am going to launch my new Flutter App. What about you?'),
   Message(
       transmissionType: TransmissionType.SENT,
       messageType: MessageType.TEXT,
-      time: DateTime.utc(2020, 1, 3, 20, 22),
+      time: DateTime.utc(2020, 12, 7, 20, 22),
       text: 'Cool! I\'m fine thanks!'),
 ];
